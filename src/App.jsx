@@ -4,11 +4,15 @@ import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp.jsx"
 import About from "./pages/About"
 import Profile from "./pages/Profile.jsx"
+import Header from "./components/Header.jsx"
 
 
 export default function App() {
   return (
+
+    // <div className="bg-gray-400">
     <BrowserRouter>
+    <Header />
 
   <Routes>
     <Route path ="/" element={< Home/>} />
@@ -19,5 +23,6 @@ export default function App() {
   </Routes>
   
     </BrowserRouter>
+    
   )
 }
