@@ -21,7 +21,8 @@ export const signin = async (req, res, next) => {
     try {
         const validUser = await User.findOne({ email });
         if(!validUser) return next(errorHandler(404, "user not found"));
-        const validPassword = bcryptjs.compareSync(password, validUser.password);  
+        const validPassword = bcryptjs.compareSync(password, validUser.password); 
+        // compare sync is used to compare hashed and plain ,bcryptjs is the package 
         if(!validPassword) return next(errorHandler(401, "invalid password"));
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
