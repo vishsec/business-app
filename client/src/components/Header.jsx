@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
-    <header className="bg-[#284d92] shadow-lg" >
+    <header className="bg-[#1f3c72] shadow-lg" >
         <div className="flex justify-between items-center max-w-9xl mx-auto p-2">
         <Link to="/">
         <h1 className=' font-bold text-sm md:text-xl flex flex-wrap'>
@@ -13,7 +13,7 @@ export default function Header() {
         </h1>
         </Link>
 
-        <form className="bg-[#84caf0] p-3 rounded-lg flex items-center">
+        <form className="bg-[#89d9f0] p-3 rounded-lg flex items-center">
             <input type="text" placeholder="Search..." className="bg-transparent focus:outline-none w-24 sm:w-80 " />
             <FaSearch className="text-slate-800"/>
         </form>

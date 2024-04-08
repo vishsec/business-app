@@ -76,7 +76,7 @@ export default function SignIn() {
         id='password' 
         onChange={handleChange}/>
 
-        <button disabled = {loading} className='bg-blue-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
+        <button disabled = {loading} className='bg-[#162b4f] hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
           {loading ? 
           'loading...'
           : 
