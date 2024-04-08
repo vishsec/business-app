@@ -1,13 +1,18 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice'
+import { useSelector } from 'react-redux'
 
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const {loading, error } = useSelector((state) => state.user); //selector hook is used 
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {             //handles changes in the input and makes sure the texts wont disappear and update themselves
     setFormData({
@@ -20,7 +25,7 @@ export default function SignIn() {
     e.preventDefault();
 
     try{
-      setLoading(true);
+      dispatch(signInStart()); //(before redux) setLoading(true);
 
     const res = await fetch('/api/auth/signin', { //formdata
       method: 'POST',
@@ -33,19 +38,22 @@ export default function SignIn() {
     console.log(data);
 
     if(data.success === false) {
-      setError(data.message);
-      setLoading(false);
+      dispatch(signInFailure(data.message));
+
+      //(before redux) setError(data.message);
+      // setLoading(false);
       return;
     }
-    setLoading(false);
-
-    setError(null);
+    dispatch(signInSuccess(data));
+    // setLoading(false);
+    // setError(null);
     navigate('/');
 
     } catch(error)
     {
-      setLoading(false);
-      setError(error.message);
+      dispatch(signInFailure(error.message));
+      // setLoading(false);
+      // setError(error.message);
     }
   };
 
