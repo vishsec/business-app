@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice'
 import { useSelector } from 'react-redux'
+import OAuth from '../components/OAuth'
 
 
 export default function SignIn() {
@@ -83,7 +84,11 @@ export default function SignIn() {
           'sign in' 
           }
         </button>
+        <OAuth />
+
       </form>
+
+
       <div className='flex gap-2 mt-2'>
         <p className='font-semibold' >want to be a user?</p>
         <Link to={"/sign-up"}>
