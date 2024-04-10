@@ -77,7 +77,7 @@ export default function SignIn() {
         id='password' 
         onChange={handleChange}/>
 
-        <button disabled = {loading} className='bg-[#162b4f] hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
+        <button disabled = {loading} className='bg-slate-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
           {loading ? 
           'loading...'
           : 
@@ -90,7 +90,7 @@ export default function SignIn() {
 
 
       <div className='flex gap-2 mt-2'>
-        <p className='font-semibold' >want to be a user?</p>
+        <p className='font-semibold text-slate-900' >want to be a user?</p>
         <Link to={"/sign-up"}>
           <span className='text-[#0e202b] font-sans hover:text-white hover:underline' >sign up</span>
         </Link>

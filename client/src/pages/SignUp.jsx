@@ -74,7 +74,7 @@ export default function SignUp() {
         id='password' 
         onChange={handleChange}/>
 
-        <button disabled = {loading} className='bg-blue-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
+        <button disabled = {loading} className='bg-slate-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
           {loading ? 
           'loading...'
           : 
