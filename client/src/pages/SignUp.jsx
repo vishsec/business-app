@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
@@ -52,7 +53,8 @@ export default function SignUp() {
   return (
     <div className='p-3 max-w-lg mx-auto ' >
       
-      <h1 className="font-semibold text-4xl text-center my-16 font-sans">Sign up</h1>
+      <h1 className=" font-semibold text-4xl text-center my-16 font-sans text-purple-200">Sign up</h1>
+      
       <form onSubmit={handleSubmit} className='gap-7 flex flex-col' >
 
         <input type="text" 
@@ -81,6 +83,7 @@ export default function SignUp() {
         </button>
         <OAuth />
       </form>
+
       <div className='flex gap-2 mt-2'>
         <p className='font-semibold' >Already a user?</p>
         <Link to={"/sign-in"}>
@@ -88,6 +91,7 @@ export default function SignUp() {
         </Link>
       </div>
       {error && <div className="bg-red-200 border-l-4 my-4 border-red-700 text-red-900 p-4 font-semibold" role="alertdialog" > Error: {error}</div>}
-    </div>
+      </div>
+    
   )
 }

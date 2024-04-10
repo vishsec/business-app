@@ -61,7 +61,7 @@ export default function SignIn() {
   return (
     <div className='p-3 max-w-lg mx-auto ' >
       
-      <h1 className="font-semibold text-4xl text-center my-16 font-sans">Sign in</h1>
+      <h1 className="font-semibold text-4xl text-center my-16 font-sans text-purple-200">Sign in</h1>
       <form onSubmit={handleSubmit} className='gap-7 flex flex-col' >
 
         
