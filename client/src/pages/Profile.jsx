@@ -48,7 +48,7 @@ export default function Profile() {
   console.log(file);
   return (
     <div className='p-3 max-w-lg mx-auto' >
-    <h1 className='font-semibold text-3xl text-center my-7 text-purple-300' >Profile</h1>
+    <h1 className='font-bold font-mono text-3xl text-center my-7 text-purple-300' >Profile</h1>
 
       <form className='flex flex-col gap-5 ' >
         <input onChange={(e) => setFile(e.target.files[0])} type='file' ref ={fileRef} hidden accept='image/*' />
@@ -59,15 +59,15 @@ export default function Profile() {
         className='rounded-full h-24 w-24 object-cover self-center mt-2 cursor-pointer'
         />
 
-        <p>
+        <p className='text-sm self-center'>
           { fileUploadError ? (
-          <span className='text-red-400 font-bold flex justify-center'>Upload Error :/</span> 
+          <span className='text-red-400 font-bold flex justify-center'>Upload Error : image must be 2mb/</span> 
         ) :
           filePerc>0 && filePerc<100 ? (
           <span className='text-purple-400 font-bold flex justify-center'> {`uploading ${filePerc} %`} </span> 
         ) :
           filePerc === 100 ? (
-            <span className='text-green-900 px-3 bg-purple-300 rounded-full font-bold flex justify-center'>Image successfully uploaded! </span>
+            <span className='text-purple-300 rounded-full font-semibold'>Image successfully uploaded! </span>
         ) : (
           ''
         )}
