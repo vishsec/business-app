@@ -36,10 +36,31 @@ const userSlice = createSlice({
             state.error = action.payload,
             state.loading = false;
         },
+        deleteUserStart: (state) => {
+            state.loading = true;
+        },
+        deleteUserSuccess:(state, action) => {
+            state.loading = false;
+            state.currentUser = null;
+            state.error = null;
+        },
+        deleteUserFailure:(state, action) => {
+            state.error = action.payload;
+            state.loading = null;
+        },
     },
 });
 
-export const { signInStart, signInSuccess, signInFailure, updateUserStart, updateUserSuccess, updateUserFailure} = userSlice.actions;
+export const { 
+    signInStart,
+     signInSuccess,
+      signInFailure,
+       updateUserStart,
+        updateUserSuccess,
+         updateUserFailure,
+          deleteUserStart,
+           deleteUserSuccess,
+            deleteUserFailure, } = userSlice.actions;
 
 export default userSlice.reducer;
 ///////////////////////////////////////////////////////////////////////////////////// -- initial setup to use redux
