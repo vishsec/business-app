@@ -15,9 +15,9 @@ export default function Header() {
         </h1>
         </Link>
 
-        <form className="bg-neutral-300 p-3 rounded-lg flex items-center">
+        <form className="bg-neutral-300 p-3 rounded-full flex items-center">
             <input type="text" placeholder="Search..." className="bg-transparent focus:outline-none w-24 sm:w-80 " />
-            <FaSearch className="text-slate-800"/>
+            <FaSearch className="text-slate-900"/>
         </form>
         <ul className="flex gap-7">
             <Link to="/about">
