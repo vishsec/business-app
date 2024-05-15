@@ -61,7 +61,7 @@ export default function SignIn() {
   return (
     <div className='p-3 max-w-lg mx-auto ' >
       
-      <h1 className="font-semibold text-4xl text-center my-16 font-sans text-purple-200">Sign in</h1>
+      <h1 className="font-semibold font-mono text-4xl text-center my-16 text-stone-300">Sign in</h1>
       <form onSubmit={handleSubmit} className='gap-7 flex flex-col' >
 
         
@@ -90,9 +90,9 @@ export default function SignIn() {
 
 
       <div className='flex gap-2 mt-2'>
-        <p className='font-semibold text-slate-900' >want to be a user?</p>
+        <p className='font-semibold text-slate-200' >want to be a user?</p>
         <Link to={"/sign-up"}>
-          <span className='text-[#0e202b] font-sans hover:text-white hover:underline' >sign up</span>
+          <span className='text-[#929090] font-sans hover:text-white hover:underline' >sign up</span>
         </Link>
       </div>
       {error && <div className="bg-red-200 border-l-4 my-4 border-red-700 text-red-900 p-4 font-semibold" role="alertdialog" > Error: {error}</div>}

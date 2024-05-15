@@ -48,6 +48,19 @@ const userSlice = createSlice({
             state.error = action.payload;
             state.loading = null;
         },
+
+        signOutUserStart: (state) => {
+            state.loading = true;
+        },
+        signOutUserSuccess:(state, action) => {
+            state.loading = false;
+            state.currentUser = null;
+            state.error = null;
+        },
+        signOutUserFailure:(state, action) => {
+            state.error = action.payload;
+            state.loading = null;
+        },
     },
 });
 
@@ -60,7 +73,10 @@ export const {
          updateUserFailure,
           deleteUserStart,
            deleteUserSuccess,
-            deleteUserFailure, } = userSlice.actions;
+            deleteUserFailure,
+             signOutUserFailure,
+              signOutUserSuccess,
+               signOutUserStart, } = userSlice.actions;
 
 export default userSlice.reducer;
 ///////////////////////////////////////////////////////////////////////////////////// -- initial setup to use redux
