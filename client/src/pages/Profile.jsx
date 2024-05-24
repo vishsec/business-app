@@ -15,7 +15,9 @@ export default function Profile() {
   const [filePerc,setFilePerc] = useState(0);
   const [ fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
-  const [updateSuccess, setUpdateSuccess] = useState(false); 
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showListingsError, setShowListingsError] = useState(false);
+  const [userListings, setUserListings ] = useState([]);
   const dispatch = useDispatch();
   // console.log(formData);
   // console.log(fileUploadError);
@@ -120,6 +122,23 @@ export default function Profile() {
     }
   }
 
+  const handleShowListings = async () => {
+    try {
+      setShowListingsError(false);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await res.json();
+      if(data.success === false) {
+        setShowListingsError(true);
+        return;
+      }
+
+      setUserListings(data);
+    } catch (error) {
+      setShowListingsError(true);
+    }
+
+  };
+
 
   return (
     <div className='p-3 max-w-lg mx-auto' >
@@ -161,21 +180,49 @@ export default function Profile() {
         onChange={handleChange}
         />
 
-        <button disabled={loading} className='bg-slate-900 text-white rounded-full p-4 font-bold hover:opacity-70 diabled:opacity-90'>
+        <button disabled={loading} className='bg-purple-700 text-white rounded-full p-4 font-bold hover:opacity-70 diabled:opacity-90'>
           {loading ? 'Loading...' : 'Update'}
         </button>
-        <Link  className='bg-emerald-800 text-white font-sans font-bold text-center rounded-full p-3 hover:bg-opacity-55' to={'/create-listing'}>
+        <Link  className='bg-fuchsia-900 text-white font-sans font-bold text-center rounded-full p-3 hover:bg-opacity-55' to={'/create-listing'}>
           Create listings
          </Link>
       </form>
 
       <div className='flex justify-between mt-5'>
         <span onClick={handleDeleteUser} className='text-red-400 cursor-pointer font-semibold'>Delete account</span>
-        <span onClick={handleSignOut} className='text-indigo-200 cursor-pointer font-semibold '>Sign out</span>
+        <span onClick={handleSignOut} className='text-blue-200 cursor-pointer font-semibold '>Sign out</span>
       </div>
 
       <p className='text-red-600 mt-5 font-bold'>{error ? error : ' '}</p>
       <p className=' text-[#efeff5] mt-5 font-bold px-12 text-center py-5' > {updateSuccess ?  'User updated successfully !!' : ' '}</p>
+
+      <button onClick={handleShowListings} className='text-violet-500 font-bold w-full text-2xl'> Show Listings </button>
+      <p className='text-red-800 font-bold'>{showListingsError ? 'Show Listing error' : ''}</p>
+
+      {userListings && userListings.length > 0  && 
+      <div className='flex flex-col gap-4'>
+        <h1 className='text-center mt-7 text-2xl font-semibold text-fuchsia-500'>Your Listings</h1>
+      {userListings.map((listing) => (
+        <div key={listing._id} className='flex p-3 justify-between border rounded-lg border-slate-600 items-center gap-4'> 
+
+
+            <Link to={`/listing/${listing._id}`}>
+              <img src={listing.imageUrls[0]} alt='image cover' className='object-contain h-16 w-16 rounded-2xl'/>
+            </Link>
+
+            <Link className='text-white flex-1 font-semibold hover:underline truncate' to={`/listing/${listing._id}`}> 
+            <p>{listing.name}</p>
+            </Link>
+
+            <div className='flex flex-col'>
+              <button className='text-blue-400 hover:underline'>edit</button>
+              <button className='text-red-400 hover:underline '>Delete</button>
+            </div>
+
+        </div>
+        
+      ))}
+      </div>}
     </div>
   );
 }
