@@ -77,7 +77,8 @@ export default function SignIn() {
         id='password' 
         onChange={handleChange}/>
 
-        <button disabled = {loading} className='bg-slate-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
+      
+          <button disabled = {loading} className='bg-slate-900 hover:opacity-80 text-white font-semibold p-3 rounded-lg' >
           {loading ? 
           'loading...'
           : 
@@ -85,6 +86,7 @@ export default function SignIn() {
           }
         </button>
         <OAuth />
+      
 
       </form>
 
