@@ -11,12 +11,12 @@ export default function ListingItem({listing}) {
             <p className='font-semibold text-white truncate'>{listing.name}</p>
             <div className='text-white py-2 flex items-center gap-2'>
             <MdLocationOn className='h-4 w-4 text-green-500' />
-            <p className='truncate text-emerald-300 text-sm'>{listing.address}</p>
+            <p className='truncate text-emerald-300 text-sm w-full'>{listing.address}</p>
             </div>
             <p className='text-emerald-200 text-sm line-clamp-2'>{listing.description}</p>
             <p className='text-white mt-2 font-semibold flex items-center'>
                 $
-                {listing.offer ? listing.discountPrice.toLocaleString('en-US') :listing.regularPrice.toLocaleString('en-US') }
+                {listing.offer ? listing.discountPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US') }
                 {listing.type === 'rent' && ' / month'}
             </p>
         </div>

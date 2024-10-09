@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import { MdInfo } from 'react-icons/md';
 
 export default function Header() {
   const {currentUser} = useSelector(state => state.user);
@@ -30,8 +31,8 @@ export default function Header() {
         <div className="flex justify-between items-center max-w-8xl mx-auto">
         <Link to="/">
         <h1 className=' font-bold text-sm md:text-xl flex flex-wrap p-2'>
-            <span className="text-gray-300 font-serif ">Business</span>
-            <span className="text-gray-300 font-serif ">Name</span>
+            <span className="text-emerald-600 font-serif ">Vishsec</span>
+            <span className="text-emerald-400 font-serif ">Homes</span>
         </h1>
         </Link>
 
@@ -51,7 +52,11 @@ export default function Header() {
 
         <ul className="flex ">
             <Link to="/about">
-            <li className="text-sans text-white font-bold p-3">About us</li>
+            {/* <li className="text-sans text-emerald-600 font-bold text-sm p-3">More on us</li> */}
+            <li className='p-3 flex items-center justify-center py-4 md:py-2'>
+            <MdInfo className='text-emerald-700 text-2xl md:text-4xl '/>
+            </li>
+            
             </Link>
             
             <Link to ="/Profile" className='p-3'>
