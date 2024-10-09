@@ -98,7 +98,7 @@ export default function Listing() {
               {listing.offer
                 ? listing.discountPrice.toLocaleString('en-US')
                 : listing.regularPrice.toLocaleString('en-US')}
-              {listing.type === 'Rent' && ' / month'}
+              {listing.type === 'rent' && ' / month'}
             </p>
 
             <p className='flex items-center mt-6 gap-2 text-green-600  text-base font-semibold'>
@@ -108,7 +108,7 @@ export default function Listing() {
 
             <div className='flex gap-7'>
               <p className='bg-blue-900 w-full max-w-[200px] text-white font-semibold text-center p-1 rounded-md'>
-                {listing.type === 'Rent' ? 'For Rent' : 'For Sale'}
+                {listing.type === 'rent' ? 'For Rent' : 'For Sale'}
               </p>
               {listing.offer && (
                 <p className='bg-green-700 w-full max-w-[200px] text-white font-semibold text-center p-1 rounded-md'>

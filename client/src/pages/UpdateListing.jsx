@@ -106,7 +106,7 @@ export default function CreateListing() {
     };
 
     const handleChange = (e) => {
-        if(e.target.id === 'sale' || e.target.id === 'Rent')
+        if(e.target.id === 'sale' || e.target.id === 'rent')
             {
                 setFormData({
                     ...formData,
@@ -184,7 +184,7 @@ export default function CreateListing() {
                     <span className='text-white font-semibold'>Sell</span>  
                 </div>
                 <div className='flex gap-2'>
-                    <input type='checkbox' id='Rent' onChange = {handleChange} checked = {formData.type === 'Rent'} className='w-7'/>
+                    <input type='checkbox' id='rent' onChange = {handleChange} checked = {formData.type === 'rent'} className='w-7'/>
                     <span className='text-white font-semibold'>Rent</span>
                 </div>
                 <div className='flex gap-2'>
@@ -214,7 +214,9 @@ export default function CreateListing() {
                     <input type='number' id='regularPrice' min={50} max={10000000} required onChange={handleChange} value={formData.regularPrice} className='p-3 border rounded-xl w-36 focus:outline-none' />
                     <div className='flex flex-col items-center'>
                     <p className='text-white font-semibold'>Regular Price</p>
-                    <span className='text-xs text-white'>(per month)</span>
+                    {formData.type === 'rent' && (
+                        <span className='text-xs text-white'>(per month)</span>
+                    )}
                     </div>
                 </div>
                 {formData.offer && (
@@ -222,7 +224,9 @@ export default function CreateListing() {
                     <input type='number' id='discountPrice' min={0} required onChange={handleChange} value={formData.discountPrice} className='p-3 border rounded-xl w-36 focus:outline-none' />
                     <div className='flex flex-col items-center'>
                     <p className='text-white font-semibold'>Discounted Price</p>
-                    <span className='text-white text-xs'>(per month)</span>
+                    {formData.type === 'rent' && (
+                        <span className='text-xs text-white'>(per month)</span>
+                    )}
                     </div>  
                 </div>
                 )}

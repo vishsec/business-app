@@ -89,7 +89,7 @@ export default function CreateListing() {
     };
 
     const handleChange = (e) => {
-        if(e.target.id === 'sale' || e.target.id === 'Rent')
+        if(e.target.id === 'sale' || e.target.id === 'rent')
             {
                 setFormData({
                     ...formData,
@@ -166,7 +166,7 @@ export default function CreateListing() {
                     <span className='text-white font-semibold'>Sell</span>  
                 </div>
                 <div className='flex gap-2'>
-                    <input type='checkbox' id='Rent' onChange = {handleChange} checked = {formData.type === 'Rent'} className='w-7'/>
+                    <input type='checkbox' id='rent' onChange = {handleChange} checked = {formData.type === 'rent'} className='w-7'/>
                     <span className='text-white font-semibold'>Rent</span>
                 </div>
                 <div className='flex gap-2'>
