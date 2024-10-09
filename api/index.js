@@ -6,6 +6,7 @@ import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import listingRouter from './routes/listing.route.js';
 import Listing from './models/listing.model.js';
+import path from 'path';
 
 dotenv.config();
 
@@ -17,6 +18,8 @@ mongoose
 .catch((err) => {
     console.log(err);
 });
+
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -33,6 +36,22 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.length('*' , (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
+
+app.use((err, req, res, next) => {               //next middleware for error handling 
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal server error";
+    return res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message,
+    });
+});
+
 app.post('/create-listing', (req, res) => {
     console.log('Request Body:', req.body); // Log the request body
 
@@ -48,12 +67,4 @@ app.post('/create-listing', (req, res) => {
 
 
 
-app.use((err, req, res, next) => {               //next middleware for error handling 
-    const statusCode = err.statusCode || 500;
-    const message = err.message || "Internal server error";
-    return res.status(statusCode).json({
-        success: false,
-        statusCode,
-        message,
-    });
-});
+
